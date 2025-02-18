@@ -2,6 +2,8 @@ import FetchDataSteps from "@/components/tutorial/fetch-data-steps";
 import { createClient } from "@/utils/supabase/server";
 import { InfoIcon } from "lucide-react";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function ProtectedPage() {
   const supabase = await createClient();
@@ -16,7 +18,19 @@ export default async function ProtectedPage() {
 
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
+      <div className="w-full flex flex-col gap-4">
+        <div className="flex justify-between items-center">
+          <Link href="/chatbot" className="no-underline">
+            <Button variant="default" size="default">
+              Test Me - Open Chatbot
+            </Button>
+          </Link>
+          <Link href="/notes" className="self-start">
+            <Button variant="outline" size="sm" className="text-sm">
+              Go to Notes
+            </Button>
+          </Link>
+        </div>
         <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
           <InfoIcon size="16" strokeWidth={2} />
           This is a protected page that you can only see as an authenticated
